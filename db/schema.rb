@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2019_01_04_170829) do
 
   create_table "meals", force: :cascade do |t|
     t.string "name"
+    t.bigint "side_id"
+    t.bigint "main_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

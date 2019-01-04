@@ -8,8 +8,14 @@
 unless Rails.env == 'production'
   Main.destroy_all
   Side.destroy_all
+  Meal.destroy_all
   10.times do |n|
-    Main.create!({name: Faker::Food.dish})
-    Side.create!({name: Faker::Food.vegetables})
+    main = Main.create!({name: Faker::Food.dish})
+    side = Side.create!({name: Faker::Food.vegetables})
+    meal = Meal.create
+    meal.main = main
+    meal.side = side
+    meal.name = "#{main.name} with #{side.name}"
+    meal.save
   end
 end
